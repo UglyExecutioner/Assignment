@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
@@ -5,7 +6,7 @@ const app = express();
 const mongoose = require('mongoose');
 const route = require('./routes/routes');
 
-mongoose.connect('mongodb+srv://nandish:GqW1tOOGfzb4iPNA@cluster0.e550i.mongodb.net/assignment?retryWrites=true&w=majority').then(()=>{
+mongoose.connect(`mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@cluster0.e550i.mongodb.net/${process.env.DATABASE}?retryWrites=true&w=majority`).then(()=>{
   console.log("Connection Successful");
 }).catch((e)=>{
   console.log("Error connecting to database",e);
